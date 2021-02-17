@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shop</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<style>
+</style>
+<body>
+    <header>
+        <div class="container">
+            <div class="row nav text-center">
+                <div class="col-2 offset-1 py-4"><a href="{% url 'index' %}">index</a></div>
+                <div class="col-2 py-4"><a href="{% url 'shop' %}">shop</a></div>
+                <div class="col-2 py-4"><a href="{% url 'wishlist' %}">wishlist</a></div>
+                <div class="col-2 py-4"><a href="{% url 'cart' %}">cart</a></div>
+                <div class="col-2 py-4"><a href="{% url 'checkout' %}">checkout</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center py-3">
+                    <img style="width: 270px; height: 270px;" src="{{ product.rasm.url }}" alt="product">
+                    <p>{{product.nomi}}</p>
+                    <p id="narx">{{ product.narxi }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+<script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+<script src="{% static 'js/bootstrap.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+<script>
+    function addBasket(maxsulot_id) {
+        $.ajax({
+            type: "get",
+            url: "{% url 'add-savatcha'%}",
+            data: { m_id: maxsulot_id},
+        success: function (data) {
+            let count = data["count"];
+            $("#count").text(count);
+        },
+        error: function (error) {
+            concole.log("error");
+        },
+        });
+        window.location.reload();
+        }
+</script>
+<script>
+    function addWish(maxsulot_id) {
+        $.ajax({
+            type: "get",
+            url: "{% url 'Tanlangan'%}",
+            data: {m_id: maxsulot_id },
+        success: function (data) {
+            let count = data["count"];
+            $("#count").text(count);
+        },
+        error: function (error) {
+            console.log("error");
+        },
+        });
+        window.location.reload();
+    }
+</script>
+</html>

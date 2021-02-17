@@ -1,0 +1,42 @@
+.nav {
+    background-color: rgb(158, 156, 156);
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+}
+
+section {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.btn {
+    background-color: rgb(68, 65, 65);
+    color: white;
+}
+.btn a {
+    text-decoration: none;
+    color: white;
+}
+
+.btn:hover {
+    background-color: aqua;
+    
+}
+.cat a {
+    text-decoration: none;
+}
+.cat:hover {
+    background-color: burlywood;
+    color: black;
+    border-radius: 4px;
+}
+
+.prd a {
+    text-decoration: none;
+    color: black;
+}

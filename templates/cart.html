@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css'%}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row nav text-center">
+                <div class="col-2 offset-1 py-4"><a href="{% url 'index' %}">index</a></div>
+                <div class="col-2 py-4"><a href="{% url 'shop' %}">shop</a></div>
+                <div class="col-2 py-4"><a href="{% url 'wishlist' %}">wishlist</a></div>
+                <div class="col-2 py-4"><a href="{% url 'cart' %}">cart</a></div>
+                <div class="col-2 py-4"><a href="{% url 'checkout' %}">checkout</a></div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <div class="container mt-5">
+            <div class="row">
+                <table style="width:100%">
+                    <tr>
+                        <th>rasm</th>
+                        <th>nomi</th> 
+                        <th>soni</th>
+                        <th>narxi</th>
+                        <th>delete</th>
+                    </tr>
+                    {% for product in product %}
+                    <tr>
+                        <td style="width: 270px; height: 270px;"><img src="{{product.product.rasm.url}}" alt=""></td>
+                        <td>{{product.product.nomi}}</td>
+                        <td></td>
+                        <td>{{product.product.narxi}}</td>
+                        <td><a style="text-decoration: none; color: black;" href="{% url 'delete-cart' %}?c_id={{ product.id }}">delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="row py-2">
+                <div class="col-12 text-center">
+                    <div class="btn"><a href="{% url 'checkout' %}">Continue checkout</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+</body>
+<script src="{% static 'js/bootstrap.bundle.js'%}"></script>
+<script src="{% static 'js/bootstrap.js'%}"></script>
+<script src="{% static 'js/bootstrap.min.js'%}"></script>
+</html>
